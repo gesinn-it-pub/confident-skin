@@ -41,6 +41,7 @@
             <cell>
                 <component type="FooterInfo"/>
                 <component type="FooterPlaces"/>
+                <component type="ConfidentVersions"/>
             </cell>
             <cell>
                 <component type="FooterIcons" class="justify-content-end"/>
