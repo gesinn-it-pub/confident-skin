@@ -9,9 +9,10 @@ class Hooks {
 
 	public static function initExtension() {
 		global $egChameleonExternalStyleModules;
-		$egChameleonExternalStyleModules = [
-			__DIR__ . '/../resources/styles/confident.scss',
-		];
+		$egChameleonExternalStyleModules = array_merge(
+			[__DIR__ . '/../resources/styles/confident.scss'],
+			$egChameleonExternalStyleModules ?? []
+		);
 	}
 
 	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
