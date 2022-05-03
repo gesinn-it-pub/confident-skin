@@ -1,0 +1,37 @@
+{
+	"name": "ConfIDentSkin",
+	"version": "1.0.0-dev",
+	"author": [
+		"gesinn-it-wam (gesinn.it GmbH & Co. KG)"
+	],
+	"url": "https://github.com/gesinn-it-pub/ConfIDentSkin",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.35"
+	},
+	"AutoloadNamespaces": {
+		"ConfIDentSkin\\": "src/",
+		"Skins\\Chameleon\\Components\\": "src/Components"
+	},
+	"callback": "ConfIDentSkin\\Hooks::initExtension",
+	"Hooks": {
+		"BeforePageDisplay": [
+			"ConfIDentSkin\\Hooks::onBeforePageDisplay"
+		]
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources/js",
+		"remoteExtPath": "ConfIDentSkin"
+	},
+	"ResourceModules": {
+		"ext.ConfIDentSkin": {
+			"packageFiles": [
+				"init.js"
+			]
+		}
+	},
+	"MessagesDirs": {
+		"ConfIDentSkin": [ "i18n" ]
+	},
+	"manifest_version": 2
+}
