@@ -17,11 +17,12 @@ class MainContentWithSideBar extends Component {
 
 		return
 			'<div class="container">' . $this->indent(1) .
-			'<div class="row">' . $this->indent(1) .
-				'<div class="col">'. $this->indent(1) .
-					$mainContentHtml . $this->indent(-1) .
-				'</div>' . $this->indent() .
-				'<aside id="sidebar" class="col-12 col-lg-4">' . $asideHtml. '</aside>' . $this->indent(-1) .
+				'<div class="row">' . $this->indent(1) .
+					'<div class="col">'. $this->indent(1) .
+						$mainContentHtml . $this->indent(-1) .
+					'</div>' . $this->indent() .
+					'<aside id="sidebar" class="col-12 col-lg-4">' . $asideHtml. '</aside>' . $this->indent(-1) .
+				'</div>' . $this->indent(-1) .
 			'</div>';
 	}
 }
