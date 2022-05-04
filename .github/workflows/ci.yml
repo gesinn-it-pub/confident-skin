@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+
+  test:
+
+    runs-on: ubuntu-20.04
+    continue-on-error: ${{ matrix.experimental }}
+
+    strategy:
+      matrix:
+        include:
+          - mediawiki_version: '1.35'
+            chameleon_version: '4.1.0'
+            coverage: true
+            experimental: false
+          - mediawiki_version: '1.36'
+            chameleon_version: dev-master
+            coverage: false
+            experimental: true
+          - mediawiki_version: '1.37'
+            chameleon_version: dev-master
+            coverage: false
+            experimental: true
+
+    env:
+      MW_VERSION: ${{ matrix.mediawiki_version }}
+      CHAMELEON_VERSION: ${{ matrix.chameleon_version }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build docker image
+        run: make build
+
+      - name: Run PHPUnit tests
+        run: make phpunit
+        if: matrix.coverage == false
+
+      - name: Run PHPUnit tests with coverage
+        run: make phpunit-coverage
+        if: matrix.coverage == true
