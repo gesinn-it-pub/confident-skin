@@ -18,12 +18,8 @@
             </cell>
         </row>
         <row>
-            <!-- add col-12 because chameleon adds class 'col' in any case -->
-            <cell class="col-12 col-lg-8">
-                <component type="MainContent"/>
-            </cell>
             <cell>
-                <component type="SideBar"/>
+                <component type="MainContentWithSideBar"/>
             </cell>
         </row>
     </grid>

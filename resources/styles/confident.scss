@@ -1,3 +1,7 @@
 #sidebar {
   padding-top: 33px;
+
+  &:empty {
+    display: none;
+  }
 }
