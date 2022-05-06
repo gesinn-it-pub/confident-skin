@@ -8,6 +8,16 @@ use Skin;
 class Hooks {
 
 	public static function initExtension() {
+		self::setChameleonLayoutFile();
+		self::setChameleonExternalStyleModules();
+	}
+
+	private static function setChameleonLayoutFile() {
+		global $egChameleonLayoutFile;
+		$egChameleonLayoutFile = __DIR__ . '/../layouts/standard.xml';
+	}
+
+	private static function setChameleonExternalStyleModules() {
 		global $egChameleonExternalStyleModules;
 		$egChameleonExternalStyleModules = array_merge(
 			[__DIR__ . '/../resources/styles/confident.scss'],
@@ -15,11 +25,4 @@ class Hooks {
 		);
 	}
 
-	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
-		global $egChameleonLayoutFile;
-		$egChameleonLayoutFile = __DIR__ . '/../layouts/standard.xml';
-
-		$out->addModules( 'ext.ConfIDentSkin' );
-		return true;
-	}
 }

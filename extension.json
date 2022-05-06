@@ -14,21 +14,9 @@
 		"Skins\\Chameleon\\Components\\": "src/Components"
 	},
 	"callback": "ConfIDentSkin\\Hooks::initExtension",
-	"Hooks": {
-		"BeforePageDisplay": [
-			"ConfIDentSkin\\Hooks::onBeforePageDisplay"
-		]
-	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources/js",
 		"remoteExtPath": "ConfIDentSkin"
-	},
-	"ResourceModules": {
-		"ext.ConfIDentSkin": {
-			"packageFiles": [
-				"init.js"
-			]
-		}
 	},
 	"MessagesDirs": {
 		"ConfIDentSkin": [ "i18n" ]
