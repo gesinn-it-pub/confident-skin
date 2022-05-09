@@ -16,7 +16,7 @@ class SideBarDecorator extends Component {
 	public function __construct(Component $decoratee) {
 		$this->decoratee = $decoratee;
 		parent::__construct($decoratee->getSkinTemplate(), $decoratee->getDomElement(),
-			$decoratee->indent());
+			$decoratee->getIndent());
 	}
 
 	/**
@@ -27,17 +27,17 @@ class SideBarDecorator extends Component {
 		[$decorateeHtml, $sidebarHtml] =
 			self::createSidebar( $this->decoratee->getHtml() );
 
-		return
+		return $this->indent() .
 			'<div class="row">' . $this->indent(1) .
-				'<div class="col">'. $this->indent(1) .
-					$decorateeHtml . $this->indent(-1) .
-				'</div>' .
-			($sidebarHtml != '' ? $this->indent() .
-				'<aside id="sidebar" class="col-12 col-lg-4">' . $this->indent(1) .
+			($sidebarHtml != '' ?
+				'<aside id="sidebar" class="col-12 col-lg-4 order-lg-2">' . $this->indent(1) .
 					$sidebarHtml . $this->indent(-1) .
 				'</aside>' :
 				''
-			) . $this->indent(-1) .
+			) . $this->indent() .
+				'<div class="col">'. $this->indent(1) .
+					$decorateeHtml . $this->indent(-1) .
+				'</div>' . $this->indent(-1) .
 			'</div>';
 	}
 
