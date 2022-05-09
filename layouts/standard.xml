@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<structure xmlns="https://ProfessionalWiki.github.io/chameleon/schema/3.4/layout.rng">
+<structure xmlns="https://ProfessionalWiki.github.io/chameleon/schema/3.5/layout.rng">
 
     <component type="NavbarHorizontal">
         <modification type="Sticky"/>
@@ -19,7 +19,12 @@
         </row>
         <row>
             <cell>
-                <component type="MainContentWithSideBar"/>
+                <component type="ContentHeader" />
+            </cell>
+        </row>
+        <row>
+            <cell>
+                <component type="MainContentWithSideBar" hideContentHeader="yes" hideIndicators="yes" />
             </cell>
         </row>
     </grid>
