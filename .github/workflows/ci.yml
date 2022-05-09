@@ -53,5 +53,4 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           files: coverage/php/coverage.xml
-          verbose: true
         if: matrix.coverage == true
