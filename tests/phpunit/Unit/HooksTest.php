@@ -27,4 +27,13 @@ class HooksTest extends MediaWikiUnitTestCase {
 			$egChameleonExternalStyleModules[0]);
 		$this->assertEquals('x', $egChameleonExternalStyleModules[1]);
 	}
+
+	public function testInitExtensionSetsChameleonLayoutFile() {
+		global $egChameleonLayoutFile;
+
+		Hooks::initExtension();
+
+		$this->assertStringEndsWith('layouts/standard.xml', $egChameleonLayoutFile);
+	}
+
 }

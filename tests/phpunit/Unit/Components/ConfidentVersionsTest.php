@@ -1,9 +1,13 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use Skins\Chameleon\ChameleonTemplate;
 use Skins\Chameleon\Components\ConfidentVersions;
 
-class ConfidentVersionsTest extends MediaWikiUnitTestCase {
+/**
+ * @covers \Skins\Chameleon\Components\ConfidentVersions
+ */
+class ConfidentVersionsTest extends TestCase {
 
 	public function testGetHtml() {
 		global $wgOpenResearchStackVersion, $wgConfidentVersion;
