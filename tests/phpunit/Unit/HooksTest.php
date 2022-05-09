@@ -12,7 +12,7 @@ class HooksTest extends MediaWikiUnitTestCase {
 		Hooks::initExtension();
 
 		$this->assertCount(1, $egChameleonExternalStyleModules);
-		$this->assertStringEndsWith('resources/styles/confident.scss',
+		$this->assertStringEndsWith('resources/styles/ContentHeader.scss',
 			$egChameleonExternalStyleModules[0]);
 	}
 
@@ -23,7 +23,7 @@ class HooksTest extends MediaWikiUnitTestCase {
 		Hooks::initExtension();
 
 		$this->assertCount(2, $egChameleonExternalStyleModules);
-		$this->assertStringEndsWith('resources/styles/confident.scss',
+		$this->assertStringEndsWith('resources/styles/ContentHeader.scss',
 			$egChameleonExternalStyleModules[0]);
 		$this->assertEquals('x', $egChameleonExternalStyleModules[1]);
 	}

@@ -20,7 +20,7 @@ class Hooks {
 	private static function setChameleonExternalStyleModules() {
 		global $egChameleonExternalStyleModules;
 		$egChameleonExternalStyleModules = array_merge(
-			[__DIR__ . '/../resources/styles/confident.scss'],
+			[__DIR__ . '/../resources/styles/ContentHeader.scss'],
 			$egChameleonExternalStyleModules ?? []
 		);
 	}
