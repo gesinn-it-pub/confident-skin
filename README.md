@@ -2,7 +2,7 @@
 [![codecov](https://codecov.io/gh/gesinn-it-pub/ConfIDentSkin/branch/main/graph/badge.svg?token=XYOGLN5ANJ)](https://codecov.io/gh/gesinn-it-pub/ConfIDentSkin)
 
 # confident-skin
-MediaWiki skin for the ConfIDent project. It can be seen in action on https://www.confident-conference.org/.
+MediaWiki skin for the ConfIDent project. It can be seen in action on https://www.confident-conference.org, powered by [docker-confident](https://github.com/gesinn-it-pub/docker-confident/).
 
 This skin is implemented as MediaWiki extension extending https://www.mediawiki.org/wiki/Skin:Chameleon.
 
