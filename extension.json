@@ -1,6 +1,6 @@
 {
 	"name": "ConfIDentSkin",
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"author": [
 		"gesinn-it-wam (gesinn.it GmbH & Co. KG)"
 	],
@@ -18,12 +18,10 @@
         "BeforePageDisplay": [
             "ConfIDentSkin\\Hooks::onBeforePageDisplay"
         ]
-      },
-      "MessagesDirs": {
-        "ConfIDentSkin": [
-            "i18n"
-        ]
-    },
+     },
+	"MessagesDirs": {
+		"ConfIDentSkin": [ "i18n" ]
+	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources"
 	},
@@ -42,8 +40,5 @@
             ]
         }
     },
-	"MessagesDirs": {
-		"ConfIDentSkin": [ "i18n" ]
-	},
 	"manifest_version": 2
 }
