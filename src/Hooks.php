@@ -19,10 +19,19 @@ class Hooks {
 
 	private static function setChameleonExternalStyleModules() {
 		global $egChameleonExternalStyleModules;
+		$styles = array_map(fn ($s) => __DIR__ . '/../resources/styles/' . $s . '.scss', [
+			'ContentHeader',
+			'enableShowAllFieldsToggle',
+		]);
+
 		$egChameleonExternalStyleModules = array_merge(
-			[__DIR__ . '/../resources/styles/ContentHeader.scss'],
+			$styles,
 			$egChameleonExternalStyleModules ?? []
 		);
 	}
 
+	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
+		$out->addModules( 'ext.ConfIDentSkin' );
+		return true;
+	}
 }

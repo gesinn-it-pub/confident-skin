@@ -1,6 +1,6 @@
 {
 	"name": "ConfIDentSkin",
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"author": [
 		"gesinn-it-wam (gesinn.it GmbH & Co. KG)"
 	],
@@ -14,12 +14,31 @@
 		"Skins\\Chameleon\\Components\\": "src/Components"
 	},
 	"callback": "ConfIDentSkin\\Hooks::initExtension",
-	"ResourceFileModulePaths": {
-		"localBasePath": "resources/js",
-		"remoteExtPath": "ConfIDentSkin"
-	},
+    "Hooks": {
+        "BeforePageDisplay": [
+            "ConfIDentSkin\\Hooks::onBeforePageDisplay"
+        ]
+     },
 	"MessagesDirs": {
 		"ConfIDentSkin": [ "i18n" ]
 	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources"
+	},
+    "ResourceModules": {
+        "ext.ConfIDentSkin": {
+            "packageFiles": [
+                "js/init.js",
+                "js/enableShowAllFieldsToggle.js"
+            ],
+            "dependencies": [
+                "oojs-ui-core",
+                "oojs-ui-widgets"
+            ],
+            "messages": [
+                "scs-hide-show-empty-input-fields"
+            ]
+        }
+    },
 	"manifest_version": 2
 }

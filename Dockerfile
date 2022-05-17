@@ -7,6 +7,9 @@ RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleo
 
 COPY . /var/www/html/extensions/ConfIDentSkin
 
+RUN cd extensions/ConfIDentSkin && \
+    npm ci
+
 RUN echo \
         "wfLoadExtension( 'Bootstrap' );\n" \
         "wfLoadSkin( 'chameleon' );\n" \
