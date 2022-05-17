@@ -14,10 +14,34 @@
 		"Skins\\Chameleon\\Components\\": "src/Components"
 	},
 	"callback": "ConfIDentSkin\\Hooks::initExtension",
+    "Hooks": {
+        "BeforePageDisplay": [
+            "ConfIDentSkin\\Hooks::onBeforePageDisplay"
+        ]
+      },
+      "MessagesDirs": {
+        "ConfIDentSkin": [
+            "i18n"
+        ]
+    },
 	"ResourceFileModulePaths": {
-		"localBasePath": "resources/js",
-		"remoteExtPath": "ConfIDentSkin"
+		"localBasePath": "resources"
 	},
+    "ResourceModules": {
+        "ext.ConfIDentSkin": {
+            "packageFiles": [
+                "js/init.js",
+                "js/enableShowAllFieldsToggle.js"
+            ],
+            "dependencies": [
+                "oojs-ui-core",
+                "oojs-ui-widgets"
+            ],
+            "messages": [
+                "scs-hide-show-empty-input-fields"
+            ]
+        }
+    },
 	"MessagesDirs": {
 		"ConfIDentSkin": [ "i18n" ]
 	},

@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "test": "npm run eslint && npm run node-qunit",
+    "test-coverage": "npm run eslint && npm run node-qunit-coverage",
+    "eslint": "eslint resources/js/**.js tests/node-qunit/**.js",
+    "node-qunit": "qunit --require ./tests/node-qunit/setup.js tests/node-qunit/**/*.test.js",
+    "node-qunit-coverage": "nyc --report-dir ./coverage/js --reporter=html --reporter=clover --all --include='resources/js/**' npm run node-qunit"
+  },
+  "devDependencies": {
+    "eslint-config-wikimedia": "^0.20.0",
+    "jsdom": "^19.0.0",
+    "nyc": "^15.1.0",
+    "qunit": "^2.19.1",
+    "sinon": "^14.0.0"
+  }
+}

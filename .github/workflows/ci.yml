@@ -25,10 +25,6 @@ jobs:
             chameleon_version: dev-master
             coverage: false
             experimental: true
-          - mediawiki_version: '1.37'
-            chameleon_version: dev-master
-            coverage: false
-            experimental: true
 
     env:
       MW_VERSION: ${{ matrix.mediawiki_version }}
@@ -38,19 +34,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Build docker image
-        run: make build
-
-      - name: Run PHPUnit tests
-        run: make phpunit
-        if: matrix.coverage == false
-
-      - name: Run PHPUnit tests with coverage
-        run: make phpunit-coverage
-        if: matrix.coverage == true
-
-      - name: Upload code coverage
-        uses: codecov/codecov-action@v2
-        with:
-          files: coverage/php/coverage.xml
-        if: matrix.coverage == true
+      - name: Run tests
+        run: make ci
