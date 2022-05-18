@@ -36,3 +36,8 @@ jobs:
 
       - name: Run tests
         run: make ci
+        if: matrix.coverage == false
+        
+      - name: Run tests with coverage
+        run: make ci-coverage
+        if: matrix.coverage == true
