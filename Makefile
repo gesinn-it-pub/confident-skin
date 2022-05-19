@@ -28,10 +28,10 @@ build:
 		.
 
 .PHONY: test
-test: phpunit node-qunit
+test: phpunit npm-test
 
 .PHONY: test-coverage
-test-coverage: phpunit-coverage node-qunit-coverage
+test-coverage: phpunit-coverage npm-test-coverage
 
 .PHONY: phpunit
 phpunit:
@@ -43,10 +43,10 @@ phpunit-coverage:
 		--coverage-html ${COVERAGE_FOLDER}/php \
 		--coverage-clover ${COVERAGE_FOLDER}/php/coverage.xml
 
-.PHONY: node-qunit
-node-qunit:
-	${NPM} run node-qunit
+.PHONY: npm-test
+npm-test:
+	${NPM} run test
 
-.PHONY: node-qunit-coverage
-node-qunit-coverage:
-	${NPM} run node-qunit-coverage
+.PHONY: npm-test-coverage
+npm-test-coverage:
+	${NPM} run test-coverage

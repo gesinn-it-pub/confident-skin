@@ -30,7 +30,7 @@ module.exports = function toggleShowAllFields() {
 		$template.children(toggleSwitchContainer).append(createToggleSwitch());
 
 		function createToggleSwitch() {
-			const toggleSwitch = new OO.ui.ToggleSwitchWidget({value: false});
+			const toggleSwitch = new OO.ui.ToggleSwitchWidget({ value: false });
 			toggleSwitch.on('change', value => changeVisibility($template, value));
 
 			const fieldlayout = new OO.ui.FieldLayout(toggleSwitch, {
@@ -60,8 +60,8 @@ module.exports = function toggleShowAllFields() {
 				// rows with empty input (inputField.attr('name') != "" is required for Datepicker)
 				const isEmptyInput = $input.val() === "" && ($input.attr('name') || '') !== '';
 				// MultiValue select, e.g. "Related To Epic"
-				const isMultiValueSelect = $input.hasClass('createboxInput') && $input.is('select')
-					&& ($input.children().length === 0 || ($input.children().length === 1 && $input.children().html() === ""))
+				const isMultiValueSelect = $input.hasClass('createboxInput') && $input.is('select') &&
+					($input.children().length === 0 || ($input.children().length === 1 && $input.children().html() === ""));
 
 				if (isEmptyInput || isMultiValueSelect)
 					hide($row);

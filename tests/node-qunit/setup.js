@@ -1,6 +1,6 @@
 const resetDom = createDom();
 prepareMediaWiki();
-global.sinon = require('sinon');
+const sinon = require('sinon');
 
 QUnit.hooks.beforeEach(assert => {
 	sinon.assert.pass = message =>
@@ -9,23 +9,23 @@ QUnit.hooks.beforeEach(assert => {
 		assert.pushResult({ result: false, expected: true, actual: false, message });
 });
 
-QUnit.hooks.afterEach(async function (assert) {
+QUnit.hooks.afterEach(() => {
 	resetDom();
 	sinon.restore();
 });
 
-
 /**
  * first attempt to provide a clean environment for each test
- * @returns {(function(): void)|*} a function to reset the DOM between tests
+ *
+ * @return {(function(): void)|*} a function to reset the DOM between tests
  */
 function createDom() {
 	// required by jsdom
-	const {TextEncoder, TextDecoder} = require('util');
+	const { TextEncoder, TextDecoder } = require('util');
 	global.TextEncoder = TextEncoder;
 	global.TextDecoder = TextDecoder;
 
-	const {JSDOM} = require('jsdom');
+	const { JSDOM } = require('jsdom');
 	const dom = new JSDOM();
 	global.window = dom.window;
 	global.document = window.document;
@@ -34,7 +34,7 @@ function createDom() {
 
 	return () => {
 		global.document.body.innerHTML = '';
-	}
+	};
 }
 
 /**
@@ -48,7 +48,7 @@ function prepareMediaWiki() {
 
 	global.mw = global.mediaWiki = {
 		message: () => ({
-			text: () => {},
+			text: () => {}
 		})
 	};
 }

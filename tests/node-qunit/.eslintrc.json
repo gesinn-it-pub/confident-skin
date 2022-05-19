@@ -1,0 +1,6 @@
+{
+	"rules": {
+		"mediawiki/valid-package-file-require": "off",
+		"no-throw-literal": "off"
+	}
+}

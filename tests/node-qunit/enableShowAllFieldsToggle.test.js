@@ -1,12 +1,12 @@
-const enableShowAllFieldsToggle = require('../../resources/js/enableShowAllFieldsToggle');
-const ui = require('./ui-helpers');
+const enableShowAllFieldsToggle = require('../../resources/js/enableShowAllFieldsToggle.js');
+const ui = require('./ui-helpers.js');
 
 QUnit.module('enableShowAllFieldsToggle', { beforeEach: beforeEach });
 
 const classes = {
 	toggleWidget: 'oo-ui-toggleWidget',
-	row: 'sfFieldRow',
-}
+	row: 'sfFieldRow'
+};
 
 QUnit.test('adds the toggle to all marked headings', assert => {
 	$(`
@@ -32,17 +32,17 @@ const hidden = {
 		row(false, '<select class="createboxInput">'),
 	createboxInputSelectWithExactlyOneEmptyChild:
 		row(false, '<select class="createboxInput"><option></option></select>'),
-	optionalInTemplateStarter: `<div class="multipleTemplateStarter">${row(false, '<input name="x">')}</div>`,
-}
+	optionalInTemplateStarter: `<div class="multipleTemplateStarter">${row(false, '<input name="x">')}</div>`
+};
 
 QUnit.test.each('hidden initially', hidden, (assert, row) => {
-	body(template(1, true,[row]));
+	body(template(1, true, [row]));
 	enableShowAllFieldsToggle();
 	assert.visibility('hidden');
 });
 
 QUnit.test.each('visible after first toggle', hidden, (assert, row) => {
-	body(template(1, true,[row]));
+	body(template(1, true, [row]));
 	enableShowAllFieldsToggle();
 
 	click();
@@ -51,7 +51,7 @@ QUnit.test.each('visible after first toggle', hidden, (assert, row) => {
 });
 
 QUnit.test.each('hidden after toggling twice', hidden, (assert, row) => {
-	body(template(1, true,[row]));
+	body(template(1, true, [row]));
 	enableShowAllFieldsToggle();
 
 	click();
@@ -60,24 +60,23 @@ QUnit.test.each('hidden after toggling twice', hidden, (assert, row) => {
 	assert.visibility('hidden');
 });
 
-
 const notHidden = {
 	radio: row(false, '<input type="radio" name="x" value="">'),
 	checkbox: row(false, '<input type="checkbox" name="x" value="">'),
 	recommended: row('recommendedInput', '<input name="x">'),
 	mandatory: row('mandatoryInput', '<input name="x">'),
 	optionalNotEmpty: row(false, '<input name="x" value="x">'),
-	nameless: row(false, '<input value="">'),
+	nameless: row(false, '<input value="">')
 };
 
 QUnit.test.each('not hidden initially', notHidden, (assert, row) => {
-	body(template(1, true,[row]));
+	body(template(1, true, [row]));
 	enableShowAllFieldsToggle();
 	assert.visibility('visible');
 });
 
 QUnit.test.each('not hidden after toggling once', notHidden, (assert, row) => {
-	body(template(1, true,[row]));
+	body(template(1, true, [row]));
 	enableShowAllFieldsToggle();
 
 	click();
@@ -86,7 +85,7 @@ QUnit.test.each('not hidden after toggling once', notHidden, (assert, row) => {
 });
 
 QUnit.test.each('not hidden after toggling twice', notHidden, (assert, row) => {
-	body(template(1, true,[row]));
+	body(template(1, true, [row]));
 	enableShowAllFieldsToggle();
 
 	click();
@@ -96,7 +95,7 @@ QUnit.test.each('not hidden after toggling twice', notHidden, (assert, row) => {
 });
 
 function body(elements) {
-	const $form = $('<div id="pfForm"></div>');
+	const $form = $('<div>', { id: "pfForm" });
 	$(elements).appendTo($form);
 	$form.appendTo(document.body);
 }
@@ -104,7 +103,7 @@ function body(elements) {
 function template(id, hideEmptyFields = true, rows = []) {
 	const idString = `id="${id}"`;
 	const hideEmptyFieldsString = hideEmptyFields ? 'class="hideEmptyFields"' : '';
-	const rowsString = rows.join("\n", rows);
+	const rowsString = rows.join("\n");
 
 	return `
 	  <div ${idString} class="form-template-wrapper">
@@ -119,7 +118,7 @@ function template(id, hideEmptyFields = true, rows = []) {
 }
 
 function row(additionalClass, input) {
-	const mandatoryInput = additionalClass ? additionalClass : '';
+	const mandatoryInput = additionalClass || '';
 	return `
 	    <div class="${classes.row} ${mandatoryInput}">
 	        ${input}
@@ -133,17 +132,17 @@ function click(selector = '.oo-ui-toggleSwitchWidget') {
 
 function beforeEach(assert) {
 	const hasHiddenClass = s => {
-		$s = $(s);
+		const $s = $(s);
 		if ($s.length !== 1)
 			throw 'selector ' + s + ' must have exactly one matching element; has ' + $s.length;
 		return $(s).hasClass('hiddenFieldRow');
-	}
-	assert.visibility = function(expected, selector = '.' + classes.row) {
+	};
+	assert.visibility = function (expected, selector = '.' + classes.row) {
 		const visibility = hasHiddenClass(selector) ? 'hidden' : 'visible';
 		this.pushResult({
 			result: visibility === expected,
 			actual: visibility,
 			expected: expected
-		})
+		});
 	};
 }
