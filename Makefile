@@ -1,11 +1,15 @@
+EXTENSION := ConfIDentSkin
+
 MW_VERSION ?= 1.35
 CHAMELEON_VERSION ?= 4.1.0
 
+EXTENSION_FOLDER := /var/www/html/extensions/${EXTENSION}
+COVERAGE_FOLDER := ${EXTENSION_FOLDER}/coverage
 PWD := $(shell bash -c "pwd -W 2>/dev/null || pwd")# this way it works on Windows and Linux
 IMAGE_NAME := confident-skin:test-${MW_VERSION}-${CHAMELEON_VERSION}
-DOCKER_RUN := docker run --rm -v ${PWD}/coverage:/var/www/html/coverage ${IMAGE_NAME}
-PHPUNIT := ${DOCKER_RUN} php tests/phpunit/phpunit.php --testdox
-NPM := docker run --rm -v ${PWD}/coverage:/var/www/html/coverage -w /var/www/html/extensions/ConfIDentSkin ${IMAGE_NAME} npm
+DOCKER_RUN := docker run --rm -v ${PWD}/coverage:${COVERAGE_FOLDER} ${IMAGE_NAME}
+PHPUNIT := ${DOCKER_RUN} php tests/phpunit/phpunit.php --testdox -c ${EXTENSION_FOLDER}
+NPM := docker run --rm -v ${PWD}/coverage:${COVERAGE_FOLDER} -w ${EXTENSION_FOLDER} ${IMAGE_NAME} npm
 
 .PHONY: all
 all:
@@ -31,13 +35,13 @@ test-coverage: phpunit-coverage node-qunit-coverage
 
 .PHONY: phpunit
 phpunit:
-	${PHPUNIT} -c extensions/ConfIDentSkin extensions/ConfIDentSkin/tests/phpunit
+	${PHPUNIT} ${EXTENSION_FOLDER}/tests/phpunit
 
 .PHONY:
 phpunit-coverage:
-	${PHPUNIT} -c extensions/ConfIDentSkin extensions/ConfIDentSkin/tests/phpunit \
-		--coverage-html coverage/php \
-		--coverage-clover coverage/php/coverage.xml
+	${PHPUNIT} ${EXTENSION_FOLDER}/tests/phpunit \
+		--coverage-html ${COVERAGE_FOLDER}/php \
+		--coverage-clover ${COVERAGE_FOLDER}/php/coverage.xml
 
 .PHONY: node-qunit
 node-qunit:
