@@ -18,5 +18,10 @@ wfLoadExtension( 'ConfIDentSkin' );
 ```
 * Done – Navigate to `Special:Version` on your wiki to verify that the extension is successfully installed.
 
+## Developing
+### Styles
+Styles are defined as SCSS in `resources/styles`. New SCSS files needs to be added to `setChameleonExternalStyleModules()` in `Hooks.php`.
+Changed styles are only applied after compilation. This is triggered e.g. by `touch LocalSettings.php`. See Chameleon skin for more details on this behavior.
+
 ## Testing
 The code is tested using Github Actions CI. See [ci.yml](.github/workflows/ci.yml) for details.

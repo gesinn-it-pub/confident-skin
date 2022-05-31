@@ -20,8 +20,9 @@ class Hooks {
 	private static function setChameleonExternalStyleModules() {
 		global $egChameleonExternalStyleModules;
 		$styles = array_map(fn ($s) => __DIR__ . '/../resources/styles/' . $s . '.scss', [
-			'ContentHeader',
-			'enableShowAllFieldsToggle',
+			'extension-PageForms',
+			'skin-ContentHeader',
+			'skin-enableShowAllFieldsToggle',
 		]);
 
 		$egChameleonExternalStyleModules = array_merge(
