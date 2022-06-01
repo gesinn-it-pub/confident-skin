@@ -6,42 +6,35 @@ use MediaWikiUnitTestCase;
 
 class HooksTest extends MediaWikiUnitTestCase {
 
-	const EXPECTED_STYLES = [
-		'ContentHeader',
-		'enableShowAllFieldsToggle',
-	];
-
-	public function testInitExtensionSetsChameleonExternalStyleModules() {
+	public function testBeforeInitializeSetsChameleonExternalStyleModules() {
 		global $egChameleonExternalStyleModules;
+		$hooks = new Hooks(['some-style']);
 
-		Hooks::initExtension();
+		$hooks->onMediaWikiServices(null);
 
-		$this->assertCount( count( self::EXPECTED_STYLES ), $egChameleonExternalStyleModules );
-		foreach ( self::EXPECTED_STYLES as $i => $style ) {
-			$this->assertStringEndsWith( 'resources/styles/' . $style . '.scss',
-				$egChameleonExternalStyleModules[$i] );
-		}
+		$this->assertCount( 1, $egChameleonExternalStyleModules );
+		$this->assertStringEndsWith( 'resources/styles/some-style.scss',
+			$egChameleonExternalStyleModules[0] );
 	}
 
-	public function testInitExtensionPrependsToExistingChameleonExternalStyleModules() {
+	public function testBeforeInitializePrependsToExistingChameleonExternalStyleModules() {
 		global $egChameleonExternalStyleModules;
-		$egChameleonExternalStyleModules = [ 'x' ];
+		$egChameleonExternalStyleModules = [ 'some-external-style' ];
+		$hooks = new Hooks(['some-style']);
 
-		Hooks::initExtension();
+		$hooks->onMediaWikiServices(null);
 
-		$this->assertCount( 1 + count( self::EXPECTED_STYLES ), $egChameleonExternalStyleModules );
-		$this->assertEquals( 'x',
-			$egChameleonExternalStyleModules[count( self::EXPECTED_STYLES )] );
-		foreach ( self::EXPECTED_STYLES as $i => $style ) {
-			$this->assertStringEndsWith( 'resources/styles/' . $style . '.scss',
-				$egChameleonExternalStyleModules[$i] );
-		}
+		$this->assertCount( 2, $egChameleonExternalStyleModules );
+		$this->assertEquals( 'some-external-style', $egChameleonExternalStyleModules[1] );
+		$this->assertStringEndsWith( 'resources/styles/some-style.scss',
+			$egChameleonExternalStyleModules[0] );
 	}
 
-	public function testInitExtensionSetsChameleonLayoutFile() {
+	public function testBeforeInitializeSetsChameleonLayoutFile() {
 		global $egChameleonLayoutFile;
+		$hooks = new Hooks();
 
-		Hooks::initExtension();
+		$hooks->onMediaWikiServices(null);
 
 		$this->assertStringEndsWith( 'layouts/standard.xml', $egChameleonLayoutFile );
 	}

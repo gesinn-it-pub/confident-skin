@@ -13,12 +13,15 @@
 		"ConfIDentSkin\\": "src/",
 		"Skins\\Chameleon\\Components\\": "src/Components"
 	},
-	"callback": "ConfIDentSkin\\Hooks::initExtension",
     "Hooks": {
-        "BeforePageDisplay": [
-            "ConfIDentSkin\\Hooks::onBeforePageDisplay"
-        ]
+		"MediaWikiServices": "handleHooks",
+		"BeforePageDisplay": "handleHooks"
      },
+	"HookHandlers": {
+		"handleHooks": {
+			"class": "ConfIDentSkin\\Hooks"
+		}
+	},
 	"MessagesDirs": {
 		"ConfIDentSkin": [ "i18n" ]
 	},

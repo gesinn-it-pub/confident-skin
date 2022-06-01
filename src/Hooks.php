@@ -2,37 +2,51 @@
 
 namespace ConfIDentSkin;
 
-use OutputPage;
-use Skin;
+use MediaWiki\Hook\BeforeInitializeHook;
+use MediaWiki\Hook\BeforePageDisplayHook;
+use MediaWiki\Hook\MediaWikiServicesHook;
+use MediaWiki\MediaWikiServices;
 
-class Hooks {
+class Hooks implements MediaWikiServicesHook, BeforePageDisplayHook {
 
-	public static function initExtension() {
-		self::setChameleonLayoutFile();
-		self::setChameleonExternalStyleModules();
+	private $scssFiles = [
+		'extension-PageForms',
+		'skin-ContentHeader',
+		'skin-enableShowAllFieldsToggle',
+	];
+
+	public function __construct( $scssFiles = null ) {
+		if ($scssFiles !== null)
+			$this->scssFiles = $scssFiles;
 	}
 
-	private static function setChameleonLayoutFile() {
+	/**
+	 * @inheritDoc
+	 */
+	public function onMediaWikiServices( $services ) {
+		$this->setChameleonLayoutFile();
+		$this->setChameleonExternalStyleModules();
+	}
+
+	private function setChameleonLayoutFile() {
 		global $egChameleonLayoutFile;
 		$egChameleonLayoutFile = __DIR__ . '/../layouts/standard.xml';
 	}
 
-	private static function setChameleonExternalStyleModules() {
+	private function setChameleonExternalStyleModules() {
 		global $egChameleonExternalStyleModules;
-		$styles = array_map(fn ($s) => __DIR__ . '/../resources/styles/' . $s . '.scss', [
-			'extension-PageForms',
-			'skin-ContentHeader',
-			'skin-enableShowAllFieldsToggle',
-		]);
+		$styles =
+			array_map( fn( $s ) => __DIR__ . '/../resources/styles/' . $s . '.scss',
+				$this->scssFiles );
 
-		$egChameleonExternalStyleModules = array_merge(
-			$styles,
-			$egChameleonExternalStyleModules ?? []
-		);
+		$egChameleonExternalStyleModules =
+			array_merge( $styles, $egChameleonExternalStyleModules ?? [] );
 	}
 
-	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
+	/**
+	 * @inheritDoc
+	 */
+	public function onBeforePageDisplay( $out, $skin ): void {
 		$out->addModules( 'ext.ConfIDentSkin' );
-		return true;
 	}
 }
