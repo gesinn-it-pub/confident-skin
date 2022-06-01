@@ -20,7 +20,7 @@ wfLoadExtension( 'ConfIDentSkin' );
 
 ## Developing
 ### Styles
-Styles are defined as SCSS in `resources/styles`. New SCSS files needs to be added to `setChameleonExternalStyleModules()` in `Hooks.php`.
+Styles are defined as SCSS in `resources/styles`. New SCSS files need to be added to class variable `$scssFiles` in `Hooks.php`.
 Changed styles are only applied after compilation. This is triggered e.g. by `touch LocalSettings.php`. See Chameleon skin for more details on this behavior.
 
 ## Testing
