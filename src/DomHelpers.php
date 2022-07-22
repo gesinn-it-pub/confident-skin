@@ -33,7 +33,7 @@ class DomHelpers {
 	private static function load( string $source = null ): DOMNode {
 		$source ??= '<body>';
 		$doc = new DOMDocument();
-		$doc->loadHTML( $source, LIBXML_NOERROR );
+		$doc->loadHTML('<?xml encoding="utf-8"?>' . $source, LIBXML_NOERROR);
 		return $doc->getElementsByTagName( 'body' )->item( 0 );
 	}
 

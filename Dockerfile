@@ -14,4 +14,4 @@ RUN echo \
         "wfLoadExtension( 'Bootstrap' );\n" \
         "wfLoadSkin( 'chameleon' );\n" \
         "wfLoadExtension( 'ConfIDentSkin' );\n" \
-    >> LocalSettings.php \
+    >> LocalSettings.php
