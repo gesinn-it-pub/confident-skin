@@ -11,7 +11,7 @@
         <component type="PersonalTools" position="right"/>
     </component>
 
-    <grid mode="fluid">
+    <grid id="confident-content" mode="fluid">
         <row>
             <cell>
                 <component type="SiteNotice"/>
@@ -29,7 +29,7 @@
         </row>
     </grid>
 
-    <grid class="mb-2 mt-4" mode="fluid">
+    <grid id="confident-footer" class="mb-2 mt-4" mode="fluid">
         <row>
             <cell>
                 <component type="NavbarHorizontal" collapsible="no" class="small mb-2" >
