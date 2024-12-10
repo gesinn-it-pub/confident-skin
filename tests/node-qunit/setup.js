@@ -1,6 +1,11 @@
+const fs = require('fs');
+const path = require('path');
 const resetDom = createDom();
-prepareMediaWiki();
 const sinon = require('sinon');
+
+// Define paths for both versions
+const oojsJqueryPath = path.resolve(__dirname, '../../../../resources/lib/oojs/oojs.jquery.js');
+const oojsPath = path.resolve(__dirname, '../../../../resources/lib/oojs/oojs.js');
 
 QUnit.hooks.beforeEach(assert => {
 	sinon.assert.pass = message =>
@@ -8,6 +13,8 @@ QUnit.hooks.beforeEach(assert => {
 	sinon.assert.fail = message =>
 		assert.pushResult({ result: false, expected: true, actual: false, message });
 });
+
+prepareMediaWiki();
 
 QUnit.hooks.afterEach(() => {
 	resetDom();
@@ -41,7 +48,14 @@ function createDom() {
  * setup MediaWiki globals: OO, mw, ...
  */
 function prepareMediaWiki() {
-	global.OO = require('../../../../resources/lib/oojs/oojs.jquery.js');
+	// Check if oojs.js exists (for MW 1.39+), otherwise use oojs.jquery.js (for MW 1.35)
+	if (fs.existsSync(oojsPath)) {
+		global.OO = require(oojsPath);
+	} else if (fs.existsSync(oojsJqueryPath)) {
+		global.OO = require(oojsJqueryPath);
+	} else {
+		throw new Error('Neither oojs.js nor oojs.jquery.js could be found.');
+	}
 	require('../../../../resources/lib/ooui/oojs-ui-core.js');
 	require('../../../../resources/lib/ooui/oojs-ui-widgets.js');
 	require('../../../../resources/lib/ooui/oojs-ui-wikimediaui');
