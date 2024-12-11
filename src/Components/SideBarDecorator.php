@@ -3,7 +3,6 @@
 namespace Skins\Chameleon\Components;
 
 use ConfIDentSkin\DomHelpers;
-use Skins\Chameleon\ChameleonTemplate;
 
 class SideBarDecorator extends Component {
 

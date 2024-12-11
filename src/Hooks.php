@@ -2,10 +2,8 @@
 
 namespace ConfIDentSkin;
 
-use MediaWiki\Hook\BeforeInitializeHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\MediaWikiServicesHook;
-use MediaWiki\MediaWikiServices;
 
 class Hooks implements MediaWikiServicesHook, BeforePageDisplayHook {
 
