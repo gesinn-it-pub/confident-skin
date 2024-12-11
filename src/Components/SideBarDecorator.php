@@ -50,8 +50,9 @@ class SideBarDecorator extends Component {
 	}
 
 	private static function isSidebarElement( $node ) {
-		if ( !$node->hasAttributes() )
+		if ( !$node->hasAttributes() ) {
 			return false;
+		}
 		$classes = explode( ' ', $node->getAttribute( 'class' ) );
 		return in_array( 'sidebarItem', $classes );
 	}

@@ -25,8 +25,9 @@ class DomHelpers {
 		if ( $predicate( $n ) ) {
 			yield $n;
 		} else {
-			foreach ( $n->childNodes as $c )
+			foreach ( $n->childNodes as $c ) {
 				yield from self::filter( $c, $predicate );
+			}
 		}
 	}
 

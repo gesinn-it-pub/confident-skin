@@ -14,8 +14,9 @@ class Hooks implements MediaWikiServicesHook, BeforePageDisplayHook {
 	];
 
 	public function __construct( $scssFiles = null ) {
-		if ( $scssFiles !== null )
+		if ( $scssFiles !== null ) {
 			$this->scssFiles = $scssFiles;
+		}
 	}
 
 	/**
