@@ -6,10 +6,6 @@ use MediaWikiUnitTestCase;
 
 class HooksTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @covers ConfIDentSkin\Hooks::setChameleonExternalStyleModules
-	 *
-	 */
 	public function testBeforeInitializeSetsChameleonExternalStyleModules() {
 		global $egChameleonExternalStyleModules;
 		$hooks = new Hooks( [ 'some-style' ] );
@@ -21,10 +17,6 @@ class HooksTest extends MediaWikiUnitTestCase {
 			$egChameleonExternalStyleModules[0] );
 	}
 
-	/**
-	 * @covers ConfIDentSkin\Hooks::setChameleonExternalStyleModules
-	 *
-	 */
 	public function testBeforeInitializePrependsToExistingChameleonExternalStyleModules() {
 		global $egChameleonExternalStyleModules;
 		$egChameleonExternalStyleModules = [ 'some-external-style' ];
@@ -38,10 +30,6 @@ class HooksTest extends MediaWikiUnitTestCase {
 			$egChameleonExternalStyleModules[0] );
 	}
 
-	/**
-	 * @covers ConfIDentSkin\Hooks::setChameleonLayoutFile
-	 *
-	 */
 	public function testBeforeInitializeSetsChameleonLayoutFile() {
 		global $egChameleonLayoutFile;
 		$hooks = new Hooks();

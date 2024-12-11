@@ -7,8 +7,6 @@ use PHPUnit\Framework\TestCase;
 class DomHelpersTest extends TestCase {
 
 	/**
-	 * @covers ConfIDentSkin\DomHelpers::cutElements
-	 *
 	 * @dataProvider provideCutElementsData
 	 */
 	public function testCutElements( $source, $expectedRest, $expectedCut ): void {

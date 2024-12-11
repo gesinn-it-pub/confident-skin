@@ -2,6 +2,7 @@
 <ruleset>
     <rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
         <exclude name="MediaWiki.NamingConventions.ValidGlobalName.allowedPrefix" />
+        <exclude name="MediaWiki.Commenting.MissingCovers.MissingCovers" />
         <exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
         <exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPrivate" />
         <exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPublic" />
