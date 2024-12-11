@@ -34,7 +34,7 @@ class SideBarDecorator extends Component {
 				'</aside>' :
 				''
 			) . $this->indent() .
-				'<div class="col">'. $this->indent( 1 ) .
+				'<div class="col">' . $this->indent( 1 ) .
 					$decorateeHtml . $this->indent( -1 ) .
 				'</div>' . $this->indent( -1 ) .
 			'</div>';
