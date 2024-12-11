@@ -10,7 +10,11 @@ use Skins\Chameleon\Components\MainContentWithSideBar;
  */
 class SidebarDecoratorTest extends TestCase {
 
-	// Do not test SideBarDecorator directly but via components using it
+	/**
+	 * Do not test SideBarDecorator directly but via components using it.
+	 *
+	 * @return array An array containing the classes to test.
+	 */
 	public static function sidebarDecoratorClasses() {
 		return [ [ MainContentWithSideBar::class ] ];
 	}
