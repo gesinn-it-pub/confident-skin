@@ -7,6 +7,11 @@ use MediaWiki\Hook\MediaWikiServicesHook;
 
 class Hooks implements MediaWikiServicesHook, BeforePageDisplayHook {
 
+	/**
+	 * List of SCSS files used by the extension or skin.
+	 *
+	 * @var string[] List of SCSS file identifiers.
+	 */
 	private $scssFiles = [
 		'extension-PageForms',
 		'skin-ContentHeader',

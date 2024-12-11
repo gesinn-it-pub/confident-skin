@@ -10,6 +10,11 @@ class SideBarDecorator extends Component {
 		return new self( $component );
 	}
 
+	/**
+	 * The component being decorated.
+	 *
+	 * @var Component
+	 */
 	private Component $decoratee;
 
 	public function __construct( Component $decoratee ) {
