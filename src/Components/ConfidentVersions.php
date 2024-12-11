@@ -13,11 +13,11 @@ class ConfidentVersions extends Component {
 
 		return $this->indent() . '<!-- versions -->' . $this->indent() .
 				'<div id="confident-versions" class="' . $this->getClassString() . '" >' .
-			$this->indent(1) .
+			$this->indent( 1 ) .
 				'<span class="openresearch-stack-version">OpenResearchStack: ' .
 					$wgOpenResearchStackVersion . '</span>' . $this->indent() .
 				'<span class="confident-version">Confident: ' .
-					$wgConfidentVersion . '</span>' . $this->indent(-1) .
+					$wgConfidentVersion . '</span>' . $this->indent( -1 ) .
 				'</div>';
 	}
 }

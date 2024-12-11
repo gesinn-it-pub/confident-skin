@@ -12,13 +12,13 @@ class DomHelpers {
 		$sourceNode = self::load( $source );
 		$targetNode = self::load();
 
-		$toCut = iterator_to_array(self::filter( $sourceNode, $predicate ), false);
+		$toCut = iterator_to_array( self::filter( $sourceNode, $predicate ), false );
 		foreach ( $toCut as $cut ) {
-			$cut->parentNode->removeChild($cut);
+			$cut->parentNode->removeChild( $cut );
 			self::append( $cut, $targetNode );
 		}
 
-		return [self::save( $sourceNode ), self::save( $targetNode )];
+		return [ self::save( $sourceNode ), self::save( $targetNode ) ];
 	}
 
 	private static function filter( DOMNode $n, $predicate ): \Generator {
@@ -33,7 +33,7 @@ class DomHelpers {
 	private static function load( string $source = null ): DOMNode {
 		$source ??= '<body>';
 		$doc = new DOMDocument();
-		$doc->loadHTML('<?xml encoding="utf-8"?>' . $source, LIBXML_NOERROR);
+		$doc->loadHTML( '<?xml encoding="utf-8"?>' . $source, LIBXML_NOERROR );
 		return $doc->getElementsByTagName( 'body' )->item( 0 );
 	}
 

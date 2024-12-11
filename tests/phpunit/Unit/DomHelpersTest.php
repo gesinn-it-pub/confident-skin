@@ -9,10 +9,10 @@ class DomHelpersTest extends TestCase {
 	/**
 	 * @dataProvider provideCutElementsData
 	 */
-	public function testCutElements($source, $expectedRest, $expectedCut) : void {
-		$predicate = fn(\DOMNode $n) => $n->hasAttributes() && $n->getAttribute('class') === 'x';
+	public function testCutElements( $source, $expectedRest, $expectedCut ) : void {
+		$predicate = fn( \DOMNode $n ) => $n->hasAttributes() && $n->getAttribute( 'class' ) === 'x';
 
-		[$rest, $cut] = DomHelpers::cutElements($source, $predicate);
+		[ $rest, $cut ] = DomHelpers::cutElements( $source, $predicate );
 
 		$this->assertEquals( $expectedRest, $rest );
 		$this->assertEquals( $expectedCut, $cut );
