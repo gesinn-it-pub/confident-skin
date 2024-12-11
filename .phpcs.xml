@@ -7,7 +7,6 @@
         <exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed" />
         <exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPrivate" />
         <exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPublic" />
-        <exclude name="PSR12.Functions.ReturnTypeDeclaration.SpaceBeforeColon" />
         <exclude name="MediaWiki.Commenting.PropertyDocumentation.MissingDocumentationPrivate" />
     </rule>
     <file>.</file>

@@ -9,7 +9,7 @@ class DomHelpersTest extends TestCase {
 	/**
 	 * @dataProvider provideCutElementsData
 	 */
-	public function testCutElements( $source, $expectedRest, $expectedCut ) : void {
+	public function testCutElements( $source, $expectedRest, $expectedCut ): void {
 		$predicate = fn( \DOMNode $n ) => $n->hasAttributes() && $n->getAttribute( 'class' ) === 'x';
 
 		[ $rest, $cut ] = DomHelpers::cutElements( $source, $predicate );
