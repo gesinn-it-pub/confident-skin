@@ -1,0 +1,19 @@
+{
+	"require-dev": {
+		"mediawiki/mediawiki-codesniffer": "^39.0",
+		"phpstan/phpstan": "^1.7",
+		"vimeo/psalm": "^4.23"
+	},
+	"scripts": {
+		"fix": [ "@phpcs-fix" ],
+		"test": [ "@analyze", "@phpunit" ],
+		"test-coverage": [ "@analyze", "@phpunit-coverage" ],
+		"analyze": ["@phpcs", "@phpstan"],
+		"phpcs": "phpcs -p -s src tests/phpunit",
+		"phpcs-fix": "phpcbf src tests/phpunit",
+		"psalm": "psalm --config=psalm.xml",
+		"psalm-baseline": "psalm --config=psalm.xml --set-baseline=psalm-baseline.xml",
+		"phpunit": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist --testdox",
+		"phpunit-coverage": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist --testdox --coverage-text --coverage-html coverage/php --coverage-clover coverage/php/coverage.xml"
+	}
+}

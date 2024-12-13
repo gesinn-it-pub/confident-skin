@@ -2,13 +2,16 @@
 
 namespace ConfIDentSkin;
 
-use MediaWiki\Hook\BeforeInitializeHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\MediaWikiServicesHook;
-use MediaWiki\MediaWikiServices;
 
 class Hooks implements MediaWikiServicesHook, BeforePageDisplayHook {
 
+	/**
+	 * List of SCSS files used by the extension or skin.
+	 *
+	 * @var string[] List of SCSS file identifiers.
+	 */
 	private $scssFiles = [
 		'extension-PageForms',
 		'skin-ContentHeader',
@@ -16,8 +19,9 @@ class Hooks implements MediaWikiServicesHook, BeforePageDisplayHook {
 	];
 
 	public function __construct( $scssFiles = null ) {
-		if ($scssFiles !== null)
+		if ( $scssFiles !== null ) {
 			$this->scssFiles = $scssFiles;
+		}
 	}
 
 	/**

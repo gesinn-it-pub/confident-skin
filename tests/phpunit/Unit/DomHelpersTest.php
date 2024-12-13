@@ -9,10 +9,10 @@ class DomHelpersTest extends TestCase {
 	/**
 	 * @dataProvider provideCutElementsData
 	 */
-	public function testCutElements($source, $expectedRest, $expectedCut) : void {
-		$predicate = fn(\DOMNode $n) => $n->hasAttributes() && $n->getAttribute('class') === 'x';
+	public function testCutElements( $source, $expectedRest, $expectedCut ): void {
+		$predicate = fn( \DOMNode $n ) => $n->hasAttributes() && $n->getAttribute( 'class' ) === 'x';
 
-		[$rest, $cut] = DomHelpers::cutElements($source, $predicate);
+		[ $rest, $cut ] = DomHelpers::cutElements( $source, $predicate );
 
 		$this->assertEquals( $expectedRest, $rest );
 		$this->assertEquals( $expectedCut, $cut );
@@ -36,9 +36,9 @@ class DomHelpersTest extends TestCase {
 				'<p class="x">bar 1</p><p class="x">bar 2</p>'
 			],
 			'cuts keeping whitespace' => [
-				'<div class="source"> <p> foo </p> <p class="x"> bar '."\n\r\t".'</p> '."\n\r\t".'</div>',
-				'<div class="source"> <p> foo </p>  '."\n\r\t".'</div>',
-				'<p class="x"> bar '."\n\r\t".'</p>',
+				'<div class="source"> <p> foo </p> <p class="x"> bar ' . "\n\r\t" . '</p> ' . "\n\r\t" . '</div>',
+				'<div class="source"> <p> foo </p>  ' . "\n\r\t" . '</div>',
+				'<p class="x"> bar ' . "\n\r\t" . '</p>',
 			],
 			'invalid tags are tolerated' => [
 				'<div><invalid1></invalid1><invalid2 class="x"></invalid2></div>',

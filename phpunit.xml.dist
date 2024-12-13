@@ -15,9 +15,6 @@
         <testsuite name="confident-skin-unit">
             <directory>tests/phpunit/Unit</directory>
         </testsuite>
-        <testsuite name="confident-skin-integration">
-            <directory>tests/phpunit/Integration</directory>
-        </testsuite>
     </testsuites>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">

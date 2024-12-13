@@ -10,7 +10,11 @@ use Skins\Chameleon\Components\MainContentWithSideBar;
  */
 class SidebarDecoratorTest extends TestCase {
 
-	// Do not test SideBarDecorator directly but via components using it
+	/**
+	 * Do not test SideBarDecorator directly but via components using it.
+	 *
+	 * @return array An array containing the classes to test.
+	 */
 	public static function sidebarDecoratorClasses() {
 		return [ [ MainContentWithSideBar::class ] ];
 	}
@@ -19,7 +23,7 @@ class SidebarDecoratorTest extends TestCase {
 	 * @dataProvider sidebarDecoratorClasses
 	 */
 	public function testSidebarDisplay( $componentClass ) {
-		$component = $this->createComponent($componentClass, '<div><p>foo</p><p class="sidebarItem">bar</p></div>' );
+		$component = $this->createComponent( $componentClass, '<div><p>foo</p><p class="sidebarItem">bar</p></div>' );
 		$html = $component->getHtml();
 		$this->assertStringContainsString( '<aside id="sidebar"', $html );
 	}
@@ -28,14 +32,14 @@ class SidebarDecoratorTest extends TestCase {
 	 * @dataProvider sidebarDecoratorClasses
 	 */
 	public function testSidebarIsNotDisplayedIfThereAreNoCorrespondingElements( $componentClass ) {
-		$component = $this->createComponent( $componentClass, '<div><p>foo</p><p>fake sidebarItem</p></div>');
+		$component = $this->createComponent( $componentClass, '<div><p>foo</p><p>fake sidebarItem</p></div>' );
 		$html = $component->getHtml();
 		$this->assertStringNotContainsString( 'id="sidebar"', $html );
 	}
 
 	private function createComponent( $componentClass, $mainHtml ) {
-		$template = $this->createStub(ChameleonTemplate::class);
-		$template->method( 'get' )->willReturnMap([[ 'bodytext', null, $mainHtml ]]);
+		$template = $this->createStub( ChameleonTemplate::class );
+		$template->method( 'get' )->willReturnMap( [ [ 'bodytext', null, $mainHtml ] ] );
 		$template->method( 'getMsg' )->willReturn( new Message( '' ) );
 		$component = new $componentClass( $template );
 		return $component;

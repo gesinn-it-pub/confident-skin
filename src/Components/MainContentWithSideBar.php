@@ -10,8 +10,8 @@ class MainContentWithSideBar extends Component {
 	 */
 	public function getHtml(): string {
 		$mainContent = new MainContent(
-			$this->getSkinTemplate(), $this->getDomElement(), $this->getIndent());
-		return SideBarDecorator::for($mainContent)->getHtml();
+			$this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
+		return SideBarDecorator::for( $mainContent )->getHtml();
 	}
 
 }
