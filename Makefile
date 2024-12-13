@@ -17,7 +17,6 @@ DB_TYPE?=sqlite
 DB_IMAGE?=""
 
 # extensions
-SMW_VERSION?=4.2.0
 CHAMELEON_VERSION?=4.2.1
 
 # composer

@@ -18,7 +18,6 @@ jobs:
       matrix:
         include:
           - mediawiki_version: '1.35'
-            smw_version: '4.2.0'
             php_version: 7.4
             chameleon_version: 4.2.1
             database_type: mysql
@@ -26,7 +25,6 @@ jobs:
             coverage: true
             experimental: false
           - mediawiki_version: '1.39'
-            smw_version: dev-master
             php_version: 8.1
             chameleon_version: 4.2.1
             database_type: mysql
@@ -36,7 +34,6 @@ jobs:
 
     env:
       MW_VERSION: ${{ matrix.mediawiki_version }}
-      SMW_VERSION: ${{ matrix.smw_version }}
       CHAMELEON_VERSION: ${{ matrix.chameleon_version }}
       PHP_VERSION: ${{ matrix.php_version }}
       DB_TYPE: ${{ matrix.database_type }}
