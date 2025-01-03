@@ -37,6 +37,8 @@ function createDom() {
 	global.window = dom.window;
 	global.document = window.document;
 	global.Node = window.Node;
+	global.HTMLElement = dom.window.HTMLElement;
+	global.customElements = dom.window.customElements;
 	global.$ = global.jQuery = require('../../../../resources/lib/jquery/jquery.js');
 
 	return () => {
