@@ -1,4 +1,4 @@
--include .env-39
+-include .env
 export
 
 # setup for docker-compose-ci build directory
@@ -11,10 +11,10 @@ endif
 EXTENSION := ConfIDentSkin
 
 # docker images
-MW_VERSION?=1.35
-PHP_VERSION?=7.4
-DB_TYPE?=sqlite
-DB_IMAGE?=""
+MW_VERSION?=1.39
+PHP_VERSION?=8.1
+DB_TYPE?=mysql
+DB_IMAGE?="mysql:8"
 
 # extensions
 CHAMELEON_VERSION?=4.2.1
